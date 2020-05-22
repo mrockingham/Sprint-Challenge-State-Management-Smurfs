@@ -12,29 +12,11 @@ import allReducers from './reducers'
 import {Provider} from 'react-redux'
 
 const store = createStore(allReducers, composeWithDevTools(
-    applyMiddleware(thunk,logger)))
+    applyMiddleware(logger, thunk)))
 
 
 
-
-
-
-//store -> globalized state
-//Action ->increment
-//Reducer
-//Dispatch
-
-
-
-
-
-
-
-ReactDOM.render(
-
-<Provider store={store}>
-<App />
-</Provider>
+ReactDOM.render(<Provider store={store}><App /></Provider>
 , document.getElementById("root"));
 
 

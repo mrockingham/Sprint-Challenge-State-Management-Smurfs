@@ -1,25 +1,54 @@
-import React from 'React'
 
-import axios from 'axios'
+
+import{ 
+FETCH_SMURFS_SUCCESS, 
+ FETCH_SMURFS_FAILURE,
+ FETCH_SMURFS_START,
+FETCH_SMURFS } 
+from '../actions/'
 
 const initialState = {
-    name: '',
-    age: '',
-    height: '',
-    id: ''
+    loading: false,
+    smurfs: [],
+    error: ''
+    
+    
 }
-
-const smurfList =(state =initialState, action)=>{
-    console.log('smurf list reducer', action)
+ const smurfList = (state = initialState, action)=>{
+    
     switch (action.type) {
-        case 'Fetch_Smurf':
+        case FETCH_SMURFS_START:
             return{
                 ...state,
-                error:
-                'Nothing is happening yet'
+                loading: true
             }
-        default:
-        return state
+
+        case FETCH_SMURFS_SUCCESS:
+            return{
+                ...state,
+                loading: false,
+                smurfs: [
+                    ...state.smurfs,
+                    action.payload.smurfs
+                ]
+            }    
+
+        case FETCH_SMURFS_FAILURE:
+            return{
+                ...state,
+                loading: false
+            }
+        
+        case FETCH_SMURFS:
+            return{
+                ...state,
+                smurfs:[
+                    ...state.smurfs,
+                    action.payload
+                ]
+            }
+            default:
+                return state
     }
 }
 

@@ -1,12 +1,14 @@
-import counterReducer from './counter'
-import isLogged from './isLogged'
 import {combineReducers} from 'redux'
+import counterReducer from './counter'
 import loggedReducer from './isLogged'
+import smurfList from './smurfList'
 
 const allReducers =combineReducers({
 
     counterReducer: counterReducer,
-    loggedReducer: loggedReducer
+    loggedReducer: loggedReducer,
+    smurfList: smurfList
+
 })
 
 export default allReducers

@@ -1,42 +1,50 @@
 import React from 'react'
-import { Button, Form, FormGroup, Label, Input, Card,  CardHeader, CardFooter, CardBody,
-    CardTitle, CardText } from 'reactstrap';
+// import { Button, Form, FormGroup, Label, Input, Card,  CardHeader, CardFooter,
+//  CardBody, CardTitle, CardText } 
+//  from 'reactstrap';
+
+import {connect} from 'react-redux'
 
 
 
-    const smurfCard = () =>{
-console.log('where',smurfCard) 
-    return(
+const SmurfCard = (props) =>{
 
-        <div>
-            <h2>mike was here</h2>
+return (
 
-            <Card>
+<div>
 
-            <CardHeader tag="h2"></CardHeader>
-            <CardTitle></CardTitle>
-            <CardTitle></CardTitle>
-            </Card>
+{props.smurfs.map(smurf =>{
 
+  return(
 
+  <div className='SmurfCardContainer'>
+    <h2>{smurf.name}</h2>
+   <h3>Age:{smurf.age}</h3>
+    <h3>height: {smurf.height}</h3>
+</div>
 
+)
+})}
 
-            <Form>
-                <FormGroup>
-                <Label>smurf name </Label>
-                    <Input type="email" name="email" id="exampleEmail" placeholder="..." />
-                    <Label>age </Label>
-                    <Input type="email" name="email" id="exampleEmail" placeholder="..." />
-                    <Label>height</Label>
-                    <Input type="email" name="email" id="exampleEmail" placeholder="..." />
-                </FormGroup>
-                <Button>Submit</Button>
-            </Form>
+</div>
 
 
-        </div>
-       
-    )
+  
+ 
+ 
+)
+
+
+ }
+const mapStateToProps = state => {
+  return{
+    smurfs: state.smurfs
+  }
 }
 
-export default smurfCard
+
+
+
+
+  
+  export default connect(mapStateToProps, {})(SmurfCard)

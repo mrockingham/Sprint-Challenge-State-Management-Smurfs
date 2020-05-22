@@ -1,27 +1,44 @@
-import React, { Component } from "react";
+import React, {useEffect} from "react";
 import "./App.css";
-import {useSelector, useDispatch} from 'react-redux'
-import {increment, decrement} from '../actions'
-import  SmurfCard from './SmufCard'
+import { connect } from 'react-redux'
 
 
-const App = () =>{
-  const count =useSelector(state => state.counterReducer)
-  const isLogged =useSelector(state=> state.loggedReducer)
-  const dispatch = useDispatch()
+import AddSmurf from './AddSmurf'
+import {getSmurfs} from '../actions'
+import SmurfCard from './SmufCard'
+
+
+
+const App = ({getSmurfs}) =>{
+  useEffect(()=> {
+   
+    getSmurfs()
+  }, [getSmurfs] 
+ )
+ 
+  
 
 
   return(
 <div>
-  <SmurfCard />
-  <h1>   Counter {count}</h1>
-  <button onClick={() => dispatch(increment(5))}>+</button>
-  <button onClick={()=> dispatch(decrement(5)) }>-</button>
+  
 
-{isLogged ? <h3> Valuable Information i shouldn't see</h3> : ''}
+<SmurfCard  />
+  
+ <AddSmurf />
+
+
 </div>
 
   ) 
 }
 
-export default App;
+const mapStateToProps = state => {
+  return{
+    smurfs: state.smurfs,
+    loading: state.loading,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, {getSmurfs})( App)
