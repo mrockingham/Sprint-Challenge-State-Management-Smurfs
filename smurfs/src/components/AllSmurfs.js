@@ -2,17 +2,19 @@ import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
 import {GlobalContext} from '../context/GlobalState'
 
-const AllSmurfs = () => {
-    const {smurf} = useContext(GlobalContext)
+const AllSmurfs = (props) => {
+    const  {smurf} = useContext(GlobalContext)
 console.log('what is this@@@@',smurf)
+
     return(
 
         <div>
 
-           <p>{smurf.name}</p>
+    <p></p>
+           <p>bla blagg</p>1
 
 
-            {/* {smurf.map(data => (
+            {smurf.map(data => (
                 <div>
                     <div>{data.name}</div>
                     <div>{data.age}</div>
@@ -20,7 +22,7 @@ console.log('what is this@@@@',smurf)
 
                 </div>
 
-))} */}
+))}
      
 
         </div>

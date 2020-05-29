@@ -13,7 +13,7 @@ const Town = () =>{
         <CardHeader tag="h3">Town Page</CardHeader>
         <CardBody>
           <CardTitle>
-              < AllSmurfs />
+              
           </CardTitle>
           <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
          <Link to='/add'>

@@ -1,4 +1,4 @@
-export default (state,action) =>{
+const AppReducer = (state ,action) =>{
     switch(action.type){
         case 'FETCH_SUCCESS':
         return{
@@ -10,8 +10,9 @@ export default (state,action) =>{
         }
         case'FETCH_ERROR':
         return {
+            ...state,
             loading: false,
-            smurf:[],
+            smurf:{},
             error:'something went wrong'
             
         }
@@ -28,3 +29,5 @@ export default (state,action) =>{
 
         
 }
+
+export default AppReducer
